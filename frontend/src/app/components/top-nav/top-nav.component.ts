@@ -1,15 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { AppStore } from '../../stores/app.store';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatButtonModule, RouterModule],
+  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule, RouterModule],
   selector: 'app-top-nav',
   templateUrl: './top-nav.component.html',
   styleUrls: ['./top-nav.component.scss'],
   styles: [],
 })
-export class TopNavComponent {}
+export class TopNavComponent {
+  public appStore = inject(AppStore);
+}

@@ -8,5 +8,21 @@
 }
 
 .sidebar {
-  width: 320px;
+  width: 500px;
+}
+
+.sidenav-toolbar {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.sidenav-toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+/* ensure the sidenav content stacks properly */
+.sidebar {
+  display: flex;
+  flex-direction: column;
 }
