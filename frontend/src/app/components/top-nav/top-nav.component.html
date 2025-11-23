@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <span class="topnav-title">Document Chat SPA</span>
+  <span class="topnav-spacer"></span>
+  <span class="topnav-buttons">
+    <button mat-button routerLink="/documents">Documents</button>
+    <button mat-button routerLink="/">Home</button>
+    @if (!appStore.pinned()) {
+      <button mat-icon-button aria-label="Open assistant" (click)="appStore.setPinned(true)">
+        <mat-icon>chat</mat-icon>
+      </button>
+    }
+  </span>
+</mat-toolbar>

@@ -1,0 +1,38 @@
+<mat-card class="assistant-card">
+  <mat-card-title>Assistant</mat-card-title>
+  <mat-card-content>
+    <mat-form-field appearance="fill" class="assistant-select">
+      <mat-label>Target document</mat-label>
+      <mat-select (selectionChange)="onSelect($event.value)">
+        @for (d of docsStore.documents(); track d.id) {
+          <mat-option [value]="d.id">{{ d.filename }}</mat-option>
+        } @empty {
+          <mat-option disabled>No documents</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+      <mat-list class="assistant-list">
+        @for (m of chatStore.getMessages(selectedDocumentId); track m.timestamp) {
+          <mat-list-item class="assistant-message" [class.msg-assistant]="m.role === 'assistant'" [class.msg-user]="m.role === 'user'" [class.msg-system]="m.role === 'system'">
+            <div class="msg-bubble">
+              <strong class="msg-role">{{ m.role }}:</strong>
+              <div class="msg-text">{{ m.text }}</div>
+            </div>
+            <div class="msg-meta">
+              <small class="msg-timestamp">{{ m.timestamp | date:'short' }}</small>
+            </div>
+          </mat-list-item>
+        } @empty {
+          <mat-list-item>
+            <em>No messages</em>
+          </mat-list-item>
+        }
+      </mat-list>
+    <mat-form-field appearance="outline" class="assistant-input">
+      <input matInput placeholder="Ask a question" [(ngModel)]="inputText" />
+    </mat-form-field>
+    <div class="assistant-actions">
+      <button mat-raised-button color="primary" (click)="send()">Send</button>
+    </div>
+  </mat-card-content>
+</mat-card>

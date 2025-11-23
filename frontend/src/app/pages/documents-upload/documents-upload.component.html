@@ -1,0 +1,7 @@
+<div class="upload-container">
+  <label for="file">Upload (.parquet)</label>
+  <input type="file" id="file" (change)="onFile($event)" accept=".parquet" />
+  @if (error) {
+    <div class="upload-error">{{ error }}</div>
+  }
+</div>

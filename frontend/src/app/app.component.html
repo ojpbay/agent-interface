@@ -1,0 +1,17 @@
+<mat-sidenav-container class="app-shell">
+  <mat-sidenav class="sidebar" mode="side" position="end" [opened]="appStore.pinned()" fixedInViewport>
+    <mat-toolbar class="sidenav-toolbar" color="primary">
+      <h2>Tools</h2>
+      <span class="sidenav-toolbar-spacer"></span>
+      <button mat-icon-button aria-label="Close sidebar" (click)="appStore.setPinned(false)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+    <app-sidebar-assistant></app-sidebar-assistant>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <app-top-nav></app-top-nav>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
