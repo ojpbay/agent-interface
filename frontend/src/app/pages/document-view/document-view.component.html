@@ -1,10 +1,11 @@
 <button mat-button color="primary" routerLink="/documents">Back</button>
 
-<div *ngIf="doc; else noDoc" class="document-view">
-  <h2>{{ doc.filename }}</h2>
-  <small>{{ doc.uploadedAt }}</small>
-  <app-pretty-json-viewer [jsonText]="doc.rawContent"></app-pretty-json-viewer>
-</div>
-<ng-template #noDoc>
+@if (doc) {
+  <div class="document-view">
+    <h2>{{ doc.filename }}</h2>
+    <small>{{ doc.uploadedAt }}</small>
+    <app-pretty-json-viewer [jsonText]="doc.rawContent"></app-pretty-json-viewer>
+  </div>
+} @else {
   <p>No document found</p>
-</ng-template>
+}
