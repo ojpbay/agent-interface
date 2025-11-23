@@ -1,4 +1,4 @@
-import { signalStore, withState, withMethods, patchState, getState } from '@ngrx/signals';
+import { getState, patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { DocumentModel } from '../core/models';
 
 export const DocumentsStore = signalStore(

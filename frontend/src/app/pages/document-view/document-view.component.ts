@@ -1,9 +1,9 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { DocumentsStore } from '../../stores/documents.store';
 import { CommonModule } from '@angular/common';
-import { PrettyJsonViewerComponent } from '../../components/pretty-json-viewer/pretty-json-viewer.component';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { PrettyJsonViewerComponent } from '../../components/pretty-json-viewer/pretty-json-viewer.component';
+import { DocumentsStore } from '../../stores/documents.store';
 
 @Component({
   standalone: true,

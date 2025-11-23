@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { ParquetParserService } from '../../core/services/parquet-parser.service';
 import { DocumentsStore } from '../../stores/documents.store';
 
