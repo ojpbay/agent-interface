@@ -1,0 +1,17 @@
+<h2>Documents</h2>
+<app-documents-upload></app-documents-upload>
+
+<mat-card class="documents-card">
+  <mat-list>
+    @for (d of docsStore.documents(); track d.id) {
+      <mat-list-item>
+        <a class="doc-filename" [routerLink]="['/documents', d.id]">{{ d.filename }}</a>
+        <span class="doc-meta">{{ d.uploadedAt }}</span>
+      </mat-list-item>
+    } @empty {
+      <mat-list-item>
+        <span class="doc-meta">No documents</span>
+      </mat-list-item>
+    }
+  </mat-list>
+</mat-card>

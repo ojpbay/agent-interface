@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: Document Chat SPA (client-side contracts)
+  version: '0.1.0'
+servers: []
+paths:
+  /upload:
+    post:
+      summary: Upload a document (prototype - client side)
+      requestBody:
+        content:
+          application/octet-stream: {}
+        required: true
+      responses:
+        '200':
+          description: Upload accepted (in-memory)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document'
+  /documents:
+    get:
+      summary: List uploaded documents (in-memory)
+      responses:
+        '200':
+          description: Array of documents
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document'
+  /documents/{id}:
+    get:
+      summary: Get a document by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Document
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document'
+  /chat:
+    post:
+      summary: Send a chat message for a document (prototype - mocked response)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                documentId:
+                  type: string
+                message:
+                  type: string
+      responses:
+        '200':
+          description: Assistant response (mocked)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+
+components:
+  schemas:
+    Document:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        uploadedAt:
+          type: string
+        rawContent:
+          type: string
+        contentType:
+          type: string
+    ChatSession:
+      type: object
+      properties:
+        id:
+          type: string
+        documentId:
+          type: string
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+        sessionId:
+          type: string
+        role:
+          type: string
+          enum: [user, assistant]
+        text:
+          type: string
+        timestamp:
+          type: string

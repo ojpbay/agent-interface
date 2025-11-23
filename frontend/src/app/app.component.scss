@@ -1,0 +1,12 @@
+.app-shell {
+  display: flex;
+  gap: 16px;
+}
+
+.content {
+  flex: 1 1 auto;
+}
+
+.sidebar {
+  width: 320px;
+}
